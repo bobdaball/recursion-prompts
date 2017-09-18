@@ -30,19 +30,60 @@ var sum = function(array) {
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
+function nestedtoNormal(arr){
+  return arr.reduce(function(output, elem){
+    return output.concat(elem);
+  },[])
+}
 
+var arraySum = function(array) {
+  var arr = nestedtoNormal(array);
+  if(arr.length === 0){
+    return 0;
+  }
+  var back = arr[arr.length - 1];
+  return back + arraySum(arr.slice(0,arr.length - 1));
 };
+
+
+function nestedtoNormal(arr){
+  while(arr.some(function(element){
+    return Array.isArray(element);
+  })){
+     arr = arr.reduce(function(output, elem){
+    return output.concat(elem);
+  },[])
+  }
+ return arr;
+}
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  if(!Array.isArray(n)){
+    if(n < 0){
+      n *= -1;
+      n = [...Array(n).keys()];
+      n = n.map(function(val){
+        return val * -1;
+      })
+    }
+    else{n = [...Array(n).keys()];
+    }
+  }
+
+  if(n.length === 0){
+    return 0}
+  var back = n[n.length - 1];
+  return back + sumBelow(n.slice(0, n.length - 1));
 };
+
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
