@@ -123,6 +123,18 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  var output = 1;
+
+  if(exp === 0){
+    return output;
+  }
+
+  if(exp < 0){
+    output /= base
+    return output * exponent(base, exp+1)
+  }
+  output *= base
+  return output * exponent(base, exp-1);
 };
 
 // 8. Determine if a number is a power of two.
@@ -130,10 +142,23 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-};
 
+  if(n <= 2){
+    return n === 2 || n === 1 ? true : false;
+  }
+
+  return powerOfTwo(n / 2)
+};
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  var flipped = "";
+  var last = string.length - 1;
+
+  if(flipped.length === last + 1){
+    return flipped;
+  }
+  flipped += string[last];
+  return flipped.concat(reverse(string.slice(0, last)))
 };
 
 // 10. Write a function that determines if a string is a palindrome.
