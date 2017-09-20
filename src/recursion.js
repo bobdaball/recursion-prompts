@@ -204,7 +204,7 @@ var multiply = function(x, y) {
   if(x === 0 || y === 0){
     return output;
   }
-  
+
   if(y < 0){
     x -= x + x;
     y -= y + y
@@ -219,6 +219,8 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
+
+
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -234,6 +236,16 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if(str1 === "" && str2 === ""){
+    return true;
+  }
+  var back = str1.length;
+  var back2 = str2.length;
+  if(str1[0] !== str2[0] || str1[0] === undefined){
+    return false;
+  }
+
+  return compareStr(str1.slice(1,back), str2.slice(1,back2));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
