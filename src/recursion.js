@@ -60,6 +60,16 @@ function nestedtoNormal(arr){
 // 4. Check if a number is even.
 var isEven = function(n) {
 
+if(n > -2 && n < 2){
+  return n === 0 ? true : false;
+}
+
+if(n <= -2){
+  return isEven(n+2)
+}
+
+else{
+  return isEven(n-2)}
 };
 
 // 5. Sum all integers below a given integer.
