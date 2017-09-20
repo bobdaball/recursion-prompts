@@ -88,8 +88,25 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-};
+  var rangeArr = [];
 
+
+  if (x >= y-1 && x <= y+1){
+    return rangeArr;
+  }
+
+  if(x < y){
+    var output = x + 1;
+    rangeArr.unshift(output);
+  }
+
+  else{
+    var output = x - 1;
+    rangeArr.unshift(output);
+  }
+
+  return rangeArr.concat(range(output,y));
+};
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64. Here, 8 is the base and 2 is the exponent.
