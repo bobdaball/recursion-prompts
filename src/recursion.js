@@ -186,19 +186,35 @@ var modulo = function(x, y) {
     return y < 0 ? modulo(x-y,y): modulo(x+y,y);
   }
 
+  if(y < 0 && x + y < 0){
+      return x;
+  }
   if(x < y){
-
     return x
   }
-  return modulo(x-y,y)
-
+ return y < 0 ? modulo(x+y,y): modulo(x-y,y)
 };
 
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+  var output = 0;
+
+  if(x === 0 || y === 0){
+    return output;
+  }
+  
+  if(y < 0){
+    x -= x + x;
+    y -= y + y
+  }
+
+  output += x;
+
+  return output += multiply(x,y-1)
 };
+
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
