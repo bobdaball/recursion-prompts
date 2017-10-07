@@ -349,6 +349,13 @@ var rMap = function(array, callback) {
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+  var keyCount = 0;
+
+
+
+  for(var k in obj){
+    array.push([])
+  }
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
@@ -356,6 +363,7 @@ var countKeysInObj = function(obj, key) {
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
 var countValuesInObj = function(obj, value) {
+
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
@@ -430,6 +438,21 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  var minZero = [];
+  var arrCopy = array.slice(0,array.length);
+  if(array.length === 0){
+    return minZero;
+  }
+
+  if(arrCopy[0] === 0 && arrCopy[1] === 0){
+    while(arrCopy[1] === 0){
+      arrCopy.shift();
+    }
+  }
+
+  minZero.push(arrCopy[0]);
+
+  return minZero.concat(minimizeZeroes(arrCopy.slice(1, array.length)))
 };
 
 // 35. Alternate the numbers in an array between positive and negative regardless of
