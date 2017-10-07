@@ -486,12 +486,47 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  var altOutput = [];
+/*
+  if(array.length === 0){
+    return altOutput;
+  }
+
+  var arrCopy = array.slice(0,array.length);
+
+  arrCopy[0] = arrCopy[0] * -1;
+  altOutput.push(arrCopy.shift());
+
+  return altOutput.concat(alternateSign(arrCopy));*/
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+
+  var output = "";
+  if(str.length === 0){
+    return output;
+  }
+  var num = parseInt(str[0])
+  var copy = str.slice(1,str.length);
+  if(Number.isNaN(num) === false){
+    num === 0 ? output += "zero" : output;
+    num === 1 ? output += "one" : output;
+    num === 2 ? output += "two" : output;
+    num === 3 ? output += "three" : output;
+    num === 4 ? output += "four" : output;
+    num === 5 ? output += "five" : output;
+    num === 6 ? output += "six" : output;
+    num === 7 ? output += "seven" : output;
+    num === 8 ? output += "eight" : output;
+    num === 9 ? output += "nine" : output;
+
+    return output += numToText(copy)
+  }
+  output += str[0];
+  return output += numToText(copy);
 };
 
 
